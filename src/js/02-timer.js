@@ -9,6 +9,8 @@ const Minutes = document.querySelector('span[data-minutes]');
 const Seconds = document.querySelector('span[data-seconds]');
 const start = document.querySelector('button[data-start]');
 start.setAttribute('disabled', true);
+let timer = null;
+let time = 0;
 const options = {
   enableTime: true,
   time_24hr: true,
@@ -19,7 +21,7 @@ const options = {
             alert('Please choose a date in the future');
             return;
         }
-    console.log(selectedDates[0]);
+
     time = selectedDates[0] - Date.now();
     const { days, hours, minutes, seconds } = convertMs(time);
     Days.textContent = addLeadingZero(days); 
